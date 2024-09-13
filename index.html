@@ -13,7 +13,7 @@
         <link rel="stylesheet" href="css/leaflet-measure.css">
         <style>
         #map {
-            width: 721px;
+            width: 1185px;
             height: 688px;
         }
         </style>
@@ -34,8 +34,7 @@
         <script src="js/labels.js"></script>
         <script src="js/leaflet-measure.js"></script>
         <script src="data/varieties2_1.js"></script>
-        <script src="data/Rowsmidrows_2.js"></script>
-        <script src="data/20240912chlorophyll_3.js"></script>
+        <script src="data/20240912chlorophyll_2.js"></script>
         <script>
         var highlightLayer;
         function highlightFeature(e) {
@@ -54,7 +53,7 @@
         }
         var map = L.map('map', {
             zoomControl:true, maxZoom:28, minZoom:1
-        }).fitBounds([[51.59484799834514,-0.9789927515180987],[51.59792042106323,-0.9757725300395164]]);
+        }).fitBounds([[51.59484799834514,-0.9800318215918555],[51.59792042106323,-0.9747334599657596]]);
         var hash = new L.Hash(map);
         map.attributionControl.setPrefix('<a href="https://github.com/tomchadwin/qgis2web" target="_blank">qgis2web</a> &middot; <a href="https://leafletjs.com" title="A JS library for interactive maps">Leaflet</a> &middot; <a href="https://qgis.org">QGIS</a>');
         var autolinker = new Autolinker({truncate: {length: 30, location: 'smart'}});
@@ -161,78 +160,7 @@
         });
         bounds_group.addLayer(layer_varieties2_1);
         map.addLayer(layer_varieties2_1);
-        function pop_Rowsmidrows_2(feature, layer) {
-            layer.on({
-                mouseout: function(e) {
-                    for (var i in e.target._eventParents) {
-                        if (typeof e.target._eventParents[i].resetStyle === 'function') {
-                            e.target._eventParents[i].resetStyle(e.target);
-                        }
-                    }
-                },
-                mouseover: highlightFeature,
-            });
-            var popupContent = '<table>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['name'] !== null ? autolinker.link(feature.properties['name'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['index'] !== null ? autolinker.link(feature.properties['index'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['id'] !== null ? autolinker.link(feature.properties['id'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['category'] !== null ? autolinker.link(feature.properties['category'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['class'] !== null ? autolinker.link(feature.properties['class'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <th scope="row">shortCod</th>\
-                        <td class="visible-with-data" id="shortCod">' + (feature.properties['shortCod'] !== null ? autolinker.link(feature.properties['shortCod'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['type'] !== null ? autolinker.link(feature.properties['type'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                    <tr>\
-                        <td colspan="2">' + (feature.properties['block'] !== null ? autolinker.link(feature.properties['block'].toLocaleString()) : '') + '</td>\
-                    </tr>\
-                </table>';
-            layer.bindPopup(popupContent, {maxHeight: 400});
-            var popup = layer.getPopup();
-            var content = popup.getContent();
-            var updatedContent = removeEmptyRowsFromPopupContent(content, feature);
-            popup.setContent(updatedContent);
-        }
-
-        function style_Rowsmidrows_2_0() {
-            return {
-                pane: 'pane_Rowsmidrows_2',
-                opacity: 1,
-                color: 'rgba(232,113,141,1.0)',
-                dashArray: '',
-                lineCap: 'square',
-                lineJoin: 'bevel',
-                weight: 1.0,
-                fillOpacity: 0,
-                interactive: true,
-            }
-        }
-        map.createPane('pane_Rowsmidrows_2');
-        map.getPane('pane_Rowsmidrows_2').style.zIndex = 402;
-        map.getPane('pane_Rowsmidrows_2').style['mix-blend-mode'] = 'normal';
-        var layer_Rowsmidrows_2 = new L.geoJson(json_Rowsmidrows_2, {
-            attribution: '',
-            interactive: true,
-            dataVar: 'json_Rowsmidrows_2',
-            layerName: 'layer_Rowsmidrows_2',
-            pane: 'pane_Rowsmidrows_2',
-            onEachFeature: pop_Rowsmidrows_2,
-            style: style_Rowsmidrows_2_0,
-        });
-        bounds_group.addLayer(layer_Rowsmidrows_2);
-        function pop_20240912chlorophyll_3(feature, layer) {
+        function pop_20240912chlorophyll_2(feature, layer) {
             layer.on({
                 mouseout: function(e) {
                     for (var i in e.target._eventParents) {
@@ -260,10 +188,10 @@
             popup.setContent(updatedContent);
         }
 
-        function style_20240912chlorophyll_3_0(feature) {
+        function style_20240912chlorophyll_2_0(feature) {
             if (feature.properties['Chlorophyll'] >= 38.000000 && feature.properties['Chlorophyll'] <= 42.400000 ) {
                 return {
-                pane: 'pane_20240912chlorophyll_3',
+                pane: 'pane_20240912chlorophyll_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -279,7 +207,7 @@
             }
             if (feature.properties['Chlorophyll'] >= 42.400000 && feature.properties['Chlorophyll'] <= 46.800000 ) {
                 return {
-                pane: 'pane_20240912chlorophyll_3',
+                pane: 'pane_20240912chlorophyll_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -295,7 +223,7 @@
             }
             if (feature.properties['Chlorophyll'] >= 46.800000 && feature.properties['Chlorophyll'] <= 51.200000 ) {
                 return {
-                pane: 'pane_20240912chlorophyll_3',
+                pane: 'pane_20240912chlorophyll_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -311,7 +239,7 @@
             }
             if (feature.properties['Chlorophyll'] >= 51.200000 && feature.properties['Chlorophyll'] <= 55.600000 ) {
                 return {
-                pane: 'pane_20240912chlorophyll_3',
+                pane: 'pane_20240912chlorophyll_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -327,7 +255,7 @@
             }
             if (feature.properties['Chlorophyll'] >= 55.600000 && feature.properties['Chlorophyll'] <= 60.000000 ) {
                 return {
-                pane: 'pane_20240912chlorophyll_3',
+                pane: 'pane_20240912chlorophyll_2',
                 radius: 4.0,
                 opacity: 1,
                 color: 'rgba(35,35,35,1.0)',
@@ -342,35 +270,35 @@
             }
             }
         }
-        map.createPane('pane_20240912chlorophyll_3');
-        map.getPane('pane_20240912chlorophyll_3').style.zIndex = 403;
-        map.getPane('pane_20240912chlorophyll_3').style['mix-blend-mode'] = 'normal';
-        var layer_20240912chlorophyll_3 = new L.geoJson(json_20240912chlorophyll_3, {
+        map.createPane('pane_20240912chlorophyll_2');
+        map.getPane('pane_20240912chlorophyll_2').style.zIndex = 402;
+        map.getPane('pane_20240912chlorophyll_2').style['mix-blend-mode'] = 'normal';
+        var layer_20240912chlorophyll_2 = new L.geoJson(json_20240912chlorophyll_2, {
             attribution: '',
             interactive: true,
-            dataVar: 'json_20240912chlorophyll_3',
-            layerName: 'layer_20240912chlorophyll_3',
-            pane: 'pane_20240912chlorophyll_3',
-            onEachFeature: pop_20240912chlorophyll_3,
+            dataVar: 'json_20240912chlorophyll_2',
+            layerName: 'layer_20240912chlorophyll_2',
+            pane: 'pane_20240912chlorophyll_2',
+            onEachFeature: pop_20240912chlorophyll_2,
             pointToLayer: function (feature, latlng) {
                 var context = {
                     feature: feature,
                     variables: {}
                 };
-                return L.circleMarker(latlng, style_20240912chlorophyll_3_0(feature));
+                return L.circleMarker(latlng, style_20240912chlorophyll_2_0(feature));
             },
         });
-        bounds_group.addLayer(layer_20240912chlorophyll_3);
-        map.addLayer(layer_20240912chlorophyll_3);
-        map.createPane('pane_20240912chlorophyllinterpolation_4');
-        map.getPane('pane_20240912chlorophyllinterpolation_4').style.zIndex = 404;
-        var img_20240912chlorophyllinterpolation_4 = 'data/20240912chlorophyllinterpolation_4.png';
-        var img_bounds_20240912chlorophyllinterpolation_4 = [[51.59524,-0.97866357],[51.59731029097,-0.9761542320000001]];
-        var layer_20240912chlorophyllinterpolation_4 = new L.imageOverlay(img_20240912chlorophyllinterpolation_4,
-                                              img_bounds_20240912chlorophyllinterpolation_4,
-                                              {pane: 'pane_20240912chlorophyllinterpolation_4'});
-        bounds_group.addLayer(layer_20240912chlorophyllinterpolation_4);
-        map.addLayer(layer_20240912chlorophyllinterpolation_4);
+        bounds_group.addLayer(layer_20240912chlorophyll_2);
+        map.addLayer(layer_20240912chlorophyll_2);
+        map.createPane('pane_20240912chlorophyllinterpolation_3');
+        map.getPane('pane_20240912chlorophyllinterpolation_3').style.zIndex = 403;
+        var img_20240912chlorophyllinterpolation_3 = 'data/20240912chlorophyllinterpolation_3.png';
+        var img_bounds_20240912chlorophyllinterpolation_3 = [[51.59524,-0.97866357],[51.59731029097,-0.9761542320000001]];
+        var layer_20240912chlorophyllinterpolation_3 = new L.imageOverlay(img_20240912chlorophyllinterpolation_3,
+                                              img_bounds_20240912chlorophyllinterpolation_3,
+                                              {pane: 'pane_20240912chlorophyllinterpolation_3'});
+        bounds_group.addLayer(layer_20240912chlorophyllinterpolation_3);
+        map.addLayer(layer_20240912chlorophyllinterpolation_3);
             var title = new L.Control();
             title.onAdd = function (map) {
                 this._div = L.DomUtil.create('div', 'info');
@@ -383,9 +311,8 @@
             title.addTo(map);
         var baseMaps = {};
         var overlaysTree = [
-            {label: "20240912 chlorophyll interpolation", layer: layer_20240912chlorophyllinterpolation_4},
-            {label: '20240912 chlorophyll<br /><table><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_3_384240.png" /></td><td>38 - 42.4</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_3_4244681.png" /></td><td>42.4 - 46.8</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_3_4685122.png" /></td><td>46.8 - 51.2</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_3_5125563.png" /></td><td>51.2 - 55.6</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_3_556604.png" /></td><td>55.6 - 60</td></tr></table>', layer: layer_20240912chlorophyll_3},
-            {label: '<img src="legend/Rowsmidrows_2.png" /> Rows & midrows', layer: layer_Rowsmidrows_2},
+            {label: "20240912 chlorophyll interpolation", layer: layer_20240912chlorophyllinterpolation_3},
+            {label: '20240912 chlorophyll<br /><table><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_2_384240.png" /></td><td>38 - 42.4</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_2_4244681.png" /></td><td>42.4 - 46.8</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_2_4685122.png" /></td><td>46.8 - 51.2</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_2_5125563.png" /></td><td>51.2 - 55.6</td></tr><tr><td style="text-align: center;"><img src="legend/20240912chlorophyll_2_556604.png" /></td><td>55.6 - 60</td></tr></table>', layer: layer_20240912chlorophyll_2},
             {label: '<img src="legend/varieties2_1.png" /> varieties2', layer: layer_varieties2_1},
             {label: "Google Satellite", layer: layer_GoogleSatellite_0},]
         var lay = L.control.layers.tree(null, overlaysTree,{
@@ -412,33 +339,20 @@
               addLabel(layer, i);
               i++;
         });
-        var i = 0;
-        layer_Rowsmidrows_2.eachLayer(function(layer) {
-            var context = {
-                feature: layer.feature,
-                variables: {}
-            };
-            layer.bindTooltip((layer.feature.properties['shortCod'] !== null?String('<div style="color: #000000; font-size: 12pt; font-family: \'Liberation Sans\', sans-serif;">' + layer.feature.properties['shortCod']) + '</div>':''), {permanent: true, offset: [-0, -16], className: 'css_Rowsmidrows_2'});
-            labels.push(layer);
-            totalMarkers += 1;
-              layer.added = true;
-              addLabel(layer, i);
-              i++;
-        });
         L.ImageOverlay.include({
             getBounds: function () {
                 return this._bounds;
             }
         });
-        resetLabels([layer_varieties2_1,layer_Rowsmidrows_2]);
+        resetLabels([layer_varieties2_1]);
         map.on("zoomend", function(){
-            resetLabels([layer_varieties2_1,layer_Rowsmidrows_2]);
+            resetLabels([layer_varieties2_1]);
         });
         map.on("layeradd", function(){
-            resetLabels([layer_varieties2_1,layer_Rowsmidrows_2]);
+            resetLabels([layer_varieties2_1]);
         });
         map.on("layerremove", function(){
-            resetLabels([layer_varieties2_1,layer_Rowsmidrows_2]);
+            resetLabels([layer_varieties2_1]);
         });
         </script>
     </body>
